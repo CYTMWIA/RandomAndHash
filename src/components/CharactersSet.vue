@@ -17,12 +17,17 @@ import { ref, Ref, defineExpose } from "vue";
 import { NInput, NCheckbox, NCheckboxGroup, NSpace } from "naive-ui";
 
 const additional_characters = ref("")
-const quick_select: Ref<string[]> = ref([])
 const quick_select_table: { [key: string]: string; } = {
     "a-z": "abcdefghijklmnopqrstuvwxyz",
     "A-Z": "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
     "0-9": "0123456789"
 }
+const quick_select: Ref<string[]> = ref([
+    // Default
+    quick_select_table["a-z"],
+    quick_select_table["A-Z"],
+    quick_select_table["0-9"]
+])
 
 defineExpose({
     "getCharacters": () => {
